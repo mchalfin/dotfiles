@@ -43,9 +43,9 @@ case $(uname -s) in
         export LSCOLORS="DxGxFxdxCxDxDxhbadExEx"
         alias ls="ls -hFG -D '%Y%m%d %T'"
     ;;
-    Darwin)
-        alias ls="gls -hFG --color --time-style='+%Y%m%d %T'"
-    ;;
+#    Darwin)
+#        alias ls="gls -hFG --color --time-style='+%Y%m%d %T'"
+#    ;;
     Linux)
         alias ls="ls -hFG --color --time-style='+%Y%m%d %T'"
     ;;
