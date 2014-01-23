@@ -5,7 +5,7 @@
 Run this:
 
 ```sh
-git clone https://github.com/pnaimoli/dotfiles.git ~/.dotfiles
+git clone https://github.com/mchalfin/dotfiles.git ~/.dotfiles
 ~/.dotfiles/link.sh
 ```
 
