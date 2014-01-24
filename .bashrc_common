@@ -173,7 +173,8 @@ if [[ "$(whoami)" != "peter" ]]; then
 fi
 
 #export PS1="${get_exit_status}${PURPLE}[${RED}${UNAME}${CYAN}\h${PURPLE}]$NC \[\e[1;32m\]\w${NC} > "
-export PS1='`if [ $? -eq 0 ];then echo -n "\[${GREEN}\]^_^";else echo -n "\[${RED}\]x_x";fi;echo -n "\[${PURPLE}\][\[${RED}\]"; if [[ "$(whoami)" != "peter" ]]; then echo -n "\[${RED}\]\u@"; fi; echo -n "\[${CYAN}\]\h\[${PURPLE}\]] \[${GREEN}\]\w\[${NONE}\] > "`'
+export PS1='`if [ $? -eq 0 ];then echo -n "\[${GREEN}\][$?] ";else echo -n "\[${RED}\][$?] ";fi;echo -n "\[${PURPLE}\][\[${RED}\]"; if [[ "$(whoami)" != "joseph" ]]; then echo -n "\[${RED}\]\u@"; fi; echo -n "\[${CYAN}\]\h\[${PURPLE}\]] \[${GREEN}\]\w\[${NONE}\] > "`'
+#export PS1='`if [ $? -eq 0 ];then echo -n "\[${GREEN}\]^_^";else echo -n "\[${RED}\]x_x";fi;echo -n "\[${PURPLE}\][\[${RED}\]"; if [[ "$(whoami)" != "peter" ]]; then echo -n "\[${RED}\]\u@"; fi; echo -n "\[${CYAN}\]\h\[${PURPLE}\]] \[${GREEN}\]\w\[${NONE}\] > "`'
 
 
 #-----------------------------------
