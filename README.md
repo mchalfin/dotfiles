@@ -1,4 +1,4 @@
-# pnaimoli's dotfiles
+# mchalfin's dotfiles
 
 ## install
 
