@@ -87,8 +87,10 @@ if has('autocmd')
     endif
 
     " Magic!!!
-    autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
+    ""autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
 
+    " should this go here or outside this if?
+    autocmd BufWritePre * :%s/\s\+$//e
     " Auto source the vimrc file when it is saved
     au! BufWritePost [\._]vimrc source $VIMRC
 
@@ -100,6 +102,19 @@ endif
 """"""""""""""""""""""""""""""""""
 nmap + <C-W>+
 nmap - <C-W>-
+
+"""""""""""""""""""""""""""""""""""""""""""""
+" ===== CtrlP stuff ===== "
+"""""""""""""""""""""""""""""""""""""""""""""
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+set wildignore=*btrade/conf/*
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '(Doxygen*|linux*|fbsd8*|last)$',
+    \ 'link': 'pipeline',
+    \ 'file': '\v\.(exe|so|dll|pyc)$',
+    \ }
 
 """""""""""""""""""""""""""""""
 " ===== Nice Window Title =====
@@ -340,7 +355,7 @@ noremap <leader>R :call rainbow_parenthesis#Toggle()<CR>
 "
 " Usage:
 "
-" :Bonly / :BOnly / :Bufonly / :BufOnly [buffer] 
+" :Bonly / :BOnly / :Bufonly / :BufOnly [buffer]
 "
 " Without any arguments the current buffer is kept.  With an argument the
 " buffer name/number supplied is kept.
