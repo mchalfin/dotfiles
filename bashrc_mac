@@ -1,11 +1,16 @@
 source ~/.dotfiles/.bashrc_common
 
-alias s3='ssh -Y shalgo3'
+#alias s3='ssh -Y shalgo3'
+alias s9='ssh -Y shalgo9'
+alias hrtmount='~/remote.py --mount ~/hrtvolume --at /Volumes/hrt'
+alias hrtunmount='~/remote.py --unmount ~/hrtvolume --at /Volumes/hrt'
+eval `~/remote.py --script ~/hrtvolume --at /Volumes/hrt`
+
 #alias v='mvim -v'
 #alias vi='mvim -v'
 #alias vim='mvim -v'
 
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/games/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/share/python
+export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/games/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/share/python:/Volumes/hrt/.remote/versioned/bin
 export EDITOR='mvim -v'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
