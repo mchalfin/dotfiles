@@ -1,4 +1,4 @@
-source ~/.dotfiles/.bashrc_common
+source ~/.dotfiles/bashrc_common
 
 #alias s3='ssh -Y shalgo3'
 alias s9='ssh -Y shalgo9'
