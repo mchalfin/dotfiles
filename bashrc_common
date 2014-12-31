@@ -27,8 +27,11 @@ shopt -s cmdhist
 export VIMDIR='~/.vim/'
 export EDITOR='vim'
 export CVSEDITOR='vim'
+# MALLOC_OPTIONS deprecated in latest fbsd version
 export MALLOC_OPTIONS='J'
-export MALLOC_CONF='junk:true'
+if [ -z "$SCHED_JID" ]; then
+    export MALLOC_CONF=junk:true
+fi
 export PYTHONDONTWRITEBYTECODE='1'
 export PYTHONUNBUFFERED='1'
 export LESSKEY='~/.lesskey'
@@ -47,7 +50,9 @@ case $(uname -s) in
 #        alias ls="gls -hFG --color --time-style='+%Y%m%d %T'"
 #    ;;
     Linux)
-        alias ls="ls -hFG --color --time-style='+%Y%m%d %T'"
+        export ROSVER="linux"
+        export LS_COLORS="di=1;34;40:tw=1;34;40:ow=1;34;40:fi=0:ln=36:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=33:*.rpm=90"
+        alias ls="ls -hF --color --time-style='+%Y%m%d %T'"
     ;;
 esac
 
@@ -84,9 +89,10 @@ alias findvis="find . \( ! -regex '.*/\..*' \) -type f"
 alias  more='less'
 export PAGER=less
 export LESSOPEN='|$HOME/.dotfiles/lesspipe.sh %s 2>&-'
-export LESS=-R
+export LESS='--ignore-case --hilite-unread  --window=-4 --LONG-PROMPT -R -X -P%t?f%f :stdin .?pb%pb\%:?lbLine %lb:?bbByte %bb:-...' # Use this if lesspipe.sh exists.
+#export LESS=-R
 
-umask 022
+umask 000
 
 ##--------------
 ## autojump and dir navigation
@@ -144,7 +150,12 @@ alias 19='cd `dirs -l +19`; d'
 # Shell Prompt
 #---------------
 
-red=$'\e[0;31m'
+function TRAPUSR2()
+{
+    source ~/.bashrc
+}
+trap TRAPUSR2 USR2
+
 RED=$'\e[1;31m'
 BLUE=$'\e[1;34m'
 CYAN=$'\e[1;36m'
@@ -152,29 +163,13 @@ PURPLE=$'\e[1;35m'
 GREEN=$'\e[1;32m'
 NONE=$'\e[0m'
 
-#function TRAPEXIT()
-#{
-#    if [ "$TERM" == "xterm" ]
-#    then
-#        echo -e "\e[1;31mStop su'ing me!!\e[0m"
-#    fi
-#}
-#trap TRAPEXIT EXIT
-
-function TRAPUSR2()
-{
-    source ~/.bashrc
-}
-trap TRAPUSR2 USR2
-
-if [[ "$(whoami)" != "peter" ]]; then
-    UNAME=$'\u@'
+UCOLOR=$CYAN
+if [[ "$(whoami)" != "max" ]]; then
+    # display the user in red if i'm sudo'd to someone else
+    UCOLOR=$RED
 fi
 
-#export PS1="${get_exit_status}${PURPLE}[${RED}${UNAME}${CYAN}\h${PURPLE}]$NC \[\e[1;32m\]\w${NC} > "
-export PS1='`if [ $? -eq 0 ];then echo -n "\[${GREEN}\][$?] ";else echo -n "\[${RED}\][$?] ";fi;echo -n "\[${PURPLE}\][\[${RED}\]"; if [[ "$(whoami)" != "joseph" ]]; then echo -n "\[${RED}\]\u@"; fi; echo -n "\[${CYAN}\]\h\[${PURPLE}\]] \[${GREEN}\]\w\[${NONE}\] > "`'
-#export PS1='`if [ $? -eq 0 ];then echo -n "\[${GREEN}\]^_^";else echo -n "\[${RED}\]x_x";fi;echo -n "\[${PURPLE}\][\[${RED}\]"; if [[ "$(whoami)" != "peter" ]]; then echo -n "\[${RED}\]\u@"; fi; echo -n "\[${CYAN}\]\h\[${PURPLE}\]] \[${GREEN}\]\w\[${NONE}\] > "`'
-
+export PS1='`if [ $? -eq 0 ];then echo -n "\[${GREEN}\][$?] ";else echo -n "\[${RED}\][$?] ";fi;echo -n "\[${NONE}\]\t \[${PURPLE}\][\[${UCOLOR}\]\u@\[${CYAN}\]\h\[${PURPLE}\]] \[${GREEN}\]$(pwd)\[${NONE}\] > ";`'
 
 #-----------------------------------
 # File & strings related functions:
