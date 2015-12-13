@@ -13,7 +13,11 @@ esac
 # Options
 #-------------------
 
+# by default, sometimes non zero return values are ignored if the result is
+# piped to another process, which in turn had a zero return value. Having the
+# build fail in this case is preferred.
 set -o pipefail
+
 shopt -s expand_aliases
 shopt -s checkwinsize
 shopt -s no_empty_cmd_completion
