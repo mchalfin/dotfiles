@@ -36,13 +36,13 @@ export MALLOC_OPTIONS='J'
 if [ -z "$SCHED_JID" ]; then
     export MALLOC_CONF=junk:true
 fi
-export PYTHONDONTWRITEBYTECODE='1'
-export PYTHONUNBUFFERED='1'
+#export PYTHONDONTWRITEBYTECODE='1'
 export LESSKEY='~/.lesskey'
 export HISTIGNORE='&: *:l:ll:history*:ls:cd:clear:..:...:....:p:dirs:1:2:3:4:5:6:7:8:9'
 export HISTTIMEFORMAT='%F %T '
 export CVS_RSH="ssh"
 export CLICOLOR="yes"
+export TERM=xterm-256color
 
 # Set appropriate ls alias
 case $(uname -s) in
