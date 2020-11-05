@@ -38,6 +38,7 @@ set smartcase             " overrides ignorecase if uppercase used
 set timeoutlen=1000       " vvvvvvvvvv This and the line below are to make
 set ttimeoutlen=0         " <Esc> in visual mode work immediately. Side Effects?
 set vb                    " prevent bells from showing up
+set t_vb=                 " sets visual bell length to zero so suppress flash
 set wig=*.o,*.pyc         " Ignore these files for wildmenu completion
 set wildmenu              " Better command-line completion
 set wildmode=longest:list,full " Makes tab completion smarter
