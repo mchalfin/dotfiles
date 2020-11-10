@@ -102,3 +102,10 @@ if [[ "$(whoami)" != "max" ]]; then
 fi
 
 export PS1='`if [ $? -eq 0 ];then echo -n "\[${GREEN}\][$?] ";else echo -n "\[${RED}\][$?] ";fi;echo -n "\[${NONE}\]\t \[${PURPLE}\][\[${UCOLOR}\]\u@\[${CYAN}\]\h\[${PURPLE}\]] \[${GREEN}\]$(pwd)\[${NONE}\] > ";`'
+
+#---------------
+# Python
+#---------------
+
+# this is mac only
+export PATH=/Users/max/Library/Python/3.8/bin:$PATH

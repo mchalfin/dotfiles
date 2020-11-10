@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# install pip
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+sudo python3 get-pip.py
+rm get-pip.py
+which pip3
+
 # make sure we're updated
 brew update
 brew tap phinze/homebrew-cask
@@ -8,35 +14,27 @@ brew upgrade brew-cask
 
 # install brew stuff
 brew install macvim
-brew install mosh
 brew install autojump
 brew install gawk
 brew install bash
 brew install wireshark
 brew install doxygen
-brew install svn
 brew install cowsay
 brew install gs imagemagick
 brew install p7zip
 brew install coreutils
 
-# install casks
-brew cask install adium
+# install casks ... TODO what are all of these?
 brew cask install day-o
-brew cask install dropbox
-brew cask install firefox
 brew cask install github
 brew cask install google-chrome
 brew cask install iterm2
-brew cask install kindle
 brew cask install ksdiff
-brew cask install lastpass-universal
 brew cask install multibit
 brew cask install rstudio
 brew cask install seashore
 brew cask install silverlight
 brew cask install sizeup
-brew cask install steam
 brew cask install transmission
 brew cask install vlc
 brew cask install witch
